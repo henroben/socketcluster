@@ -6,9 +6,11 @@ html
         link(rel="stylesheet", href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     body
         include ./navbar
-
-        div.container-fluid
-            div.row
+    div.container-fluid
+        div.row
+            div.loading-page(style="text-align:center;")
+                img(src="/img/loading.gif", alt="loading image", style="width:70px; margin-top:30%;")
+            div.whole-page(style="display:none;")
                 div.col-md-12(style="margin-top:50px;")
 
                     section(data-route="dashboard", style="display:none;")
@@ -24,4 +26,8 @@ html
 
         script(src='js/system/communication.min.js')
         script(src='js/system/routes.js')
+
+        script(src='js/models/dashboard.js')
+        script(src='js/models/about.js')
+
         script(src='js/system/startup.js')
