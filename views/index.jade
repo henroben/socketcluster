@@ -2,7 +2,26 @@ doctype
 html
     head
         title= title
+        //link(rel="stylesheet", href='css/spacelab.min.css')
+        link(rel="stylesheet", href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     body
-        h3 Welcome!!
+        include ./navbar
+
+        div.container-fluid
+            div.row
+                div.col-md-12(style="margin-top:50px;")
+
+                    section(data-route="dashboard", style="display:none;")
+                        include ./dashboard
+                    section(data-route="about", style="display:none;")
+                        include ./about
+
         script(src='js/socketcluster.js')
+
+        script(src='js/libraries/jquery.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
         script(src='js/libraries/director.min.js')
+
+        script(src='js/system/communication.min.js')
+        script(src='js/system/routes.js')
+        script(src='js/system/startup.js')
