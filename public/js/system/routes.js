@@ -30,10 +30,12 @@ $(function () {
             // $('section').hide();
             // $('section[data-route="about"]').show();
         };
+        var users = function () {};
 
         var routes = {
             '/dashboard': dashboard,
-            '/about': about
+            '/about': about,
+            '/users': users // when users route visited, calls build func via middleware
         };
 
         var router = Router(routes);

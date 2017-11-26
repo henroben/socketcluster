@@ -18,6 +18,7 @@ var numberCpus = require('os').cpus().length;
 // Load env variables
 var env = require('node-env-file');
 env('./.env');
+require('templatizer')(__dirname+'/templates',__dirname+'/public/js/templates.js');
 
 var fsUtil = require('socketcluster/fsutil');
 var waitForFile = fsUtil.waitForFile;
