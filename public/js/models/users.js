@@ -17,9 +17,8 @@ $(function () {
         });
     });
     observe('users-index', function (data) {
-        // console.log(data.data);
-        var users = data.data;
-
+        console.log('data', data.users);
+        var users = data.users;
         display.tbody.empty().html(templatizer["users"]({
             users:users
         }));

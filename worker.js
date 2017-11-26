@@ -10,11 +10,22 @@ class Worker extends SCWorker {
 	run() {
 		console.log('   >> Worker PID:', process.pid);
 		var environment = this.options.environment;
-
+        // Load env variables
+        var env = require('node-env-file');
+        env('./.env');
 		var app = express();
 
 		var httpServer = this.httpServer;
 		var scServer = this.scServer;
+        var mysql = require('mysql');
+        var pool = mysql.createPool({
+            connectionLimit: 500,
+            host: process.env.DB_HOST,
+            user: process.env.DB_USERNAME,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_DATABASE,
+            debug: false
+        });
 
 		if (environment == 'dev') {
 			// Log every HTTP request. See https://github.com/expressjs/morgan for other
@@ -59,7 +70,7 @@ class Worker extends SCWorker {
 				// Socket Cluster uses 'message' internally, so use 'response'
 				// client.emit('response', data);
 
-                ModelController[data.route][data.resource](client, data);
+                ModelController[data.route][data.resource](client, pool, data);
 			});
 		});
 	}

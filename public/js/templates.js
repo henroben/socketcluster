@@ -22,9 +22,9 @@
         var jade_interp;
         var locals_for_with = locals || {};
         (function(users) {
-            buf.push('<table class="table table-hover"><thead><tr><th>ID</th><th>NAME</th></tr></thead><tbody>');
+            buf.push('<table class="table table-hover"><thead><tr><th>ID</th><th>FIRST NAME</th><th>LAST NAME</th><th>EMAIL</th></tr></thead><tbody>');
             for (var i = 0; i < users.length; i++) {
-                buf.push("<tr><td>" + jade.escape(null == (jade_interp = users[i].id) ? "" : jade_interp) + "</td><td>" + jade.escape(null == (jade_interp = users[i].name) ? "" : jade_interp) + "</td></tr>");
+                buf.push("<tr><td>" + jade.escape(null == (jade_interp = users[i].id) ? "" : jade_interp) + "</td><td>" + jade.escape(null == (jade_interp = users[i].first) ? "" : jade_interp) + "</td><td>" + jade.escape(null == (jade_interp = users[i].last) ? "" : jade_interp) + "</td><td>" + jade.escape(null == (jade_interp = users[i].email) ? "" : jade_interp) + "</td></tr>");
             }
             buf.push("</tbody></table>");
         }).call(this, "users" in locals_for_with ? locals_for_with.users : typeof users !== "undefined" ? users : undefined);
